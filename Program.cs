@@ -11,8 +11,10 @@ class Program
   {
     MLContext mLContext = new MLContext();
 
+    // Load Data
     var data = LoadData(mlContext);
 
+    // Define Pipeline
     var dataProcessPipeline = mLContext.Transforms.Conversion.ConvertType("Features", nameof(OddEvenData.Number), DataKind.Single);
 
     var trainer = mLContext.BinaryClassification.Trainers.FastTree(
@@ -25,9 +27,14 @@ class Program
 
     var trainingPipeline = dataProcessPipeline.Append(trainer);
 
+    // Train the Model
     var model = trainingPipeline.Fit(data);
 
-    
+    // PredictionEngine for Testing!
+    var predictionEngine = mLContext.Model.CreatePredictionEngine<OddEvenData, OddEvenPrediction>(model);
+
+    // Test predictions
+    var testNumbers = new float[] { 1, 2, 3, 13, 21, 15, 43, 34, 12,};
   }
 
 }
