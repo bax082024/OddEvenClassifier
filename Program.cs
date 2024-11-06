@@ -1,4 +1,8 @@
-﻿using Microsoft.ML.Data;
+﻿using System;
+using System.Linq;
+using Microsoft.ML;
+using Microsoft.ML.Data;
+
 
 public class OddEvenData
 {
