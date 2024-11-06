@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.ML;
 using Microsoft.ML.Data;
+using Microsoft.ML.Trainers;
 
 
 class Program 
@@ -13,6 +14,16 @@ class Program
     var data = LoadData(mlContext);
 
     var dataProcessPipeline = mLContext.Transforms.Conversion.ConvertType("Features", nameof(OddEvenData.Number), DataKind.Single);
+
+    var trainer = mLContext.BinaryClassification.Trainers.FastTree(
+      labelColumnName: "Label",
+      featureColumnName: "Features",
+      NumberOfLeaves: 10,
+      learningRate: 0.1,
+      numberOfTrees: 50
+    );
+
+    
   }
 
 }
