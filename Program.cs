@@ -23,6 +23,8 @@ class Program
       numberOfTrees: 50
     );
 
+    var trainingPipeline = dataProcessPipeline.Append(trainer);
+
     
   }
 
