@@ -25,6 +25,8 @@ class Program
 
     var trainingPipeline = dataProcessPipeline.Append(trainer);
 
+    var model = trainingPipeline.Fit(data);
+
     
   }
 
