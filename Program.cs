@@ -4,6 +4,19 @@ using Microsoft.ML;
 using Microsoft.ML.Data;
 
 
+class Program 
+{
+  static void Main(string[] args)
+  {
+    MLContext mLContext = new MLContext();
+
+    var data = LoadData(mlContext);
+
+    var dataProcessPipeline = mLContext.Transforms.Conversion.ConvertType("Features", nameof(OddEvenData.Number), DataKind.Single);
+  }
+
+}
+
 public class OddEvenData
 {
   [LoadColumn(0)]
