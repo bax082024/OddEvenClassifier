@@ -35,6 +35,12 @@ class Program
 
     // Test predictions
     var testNumbers = new float[] { 1, 2, 3, 13, 21, 15, 43, 34, 12,};
+    Console.WriteLine("Predictions:");
+    foreach (var number in testNumbers)
+    {
+      var prediction = predictionEngine.Predict(new OddEvenData { Number = number });
+      Console.WriteLine($"Number: {number}, Prediction: {(prediction.Prediction ? "Even" : "Odd")}, Probability: {prediction.Probability:P2}");
+    }
   }
 
 }
